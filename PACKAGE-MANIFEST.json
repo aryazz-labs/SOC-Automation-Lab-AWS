@@ -1,0 +1,24 @@
+{
+  "public_package": "SOC-Automation-Lab-AWS",
+  "contents": [
+    "Existing documentation and six recovered screenshots",
+    "Actual Sysmon configuration with upstream license notice",
+    "Actual Wazuh rule block and sanitized alert JSON",
+    "Sanitized Windows agent configuration excerpt",
+    "Sanitized Shuffle workflow reference export",
+    "VirusTotal and TheHive output summaries",
+    "Additional redacted Sysmon/Wazuh/Shuffle/AWS evidence screenshots",
+    "SOC investigation report, playbooks and security review"
+  ],
+  "excluded_from_public_package": [
+    "Raw Shuffle workflow JSON with credentials and webhook URL",
+    "Unredacted screenshots showing AWS identifiers or personal addresses",
+    "Private evidence source originals"
+  ],
+  "notes": [
+    "Sanitized Shuffle workflow JSON is not import-ready.",
+    "VirusTotal summary JSON is a normalized subset, not the full raw API response.",
+    "Shuffle execution summary JSON is transcribed from Debug screenshots, not a raw run export.",
+    "TheHive response JSON redacts creator identity and request endpoint host."
+  ]
+}
