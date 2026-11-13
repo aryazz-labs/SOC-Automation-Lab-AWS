@@ -4,7 +4,7 @@ Screenshots are point-in-time evidence. The two AWS security-group screenshots a
 
 | File | What it supports | Notes |
 |---|---|---|
-| [](screenshots/01-wazuh-agent-active.png) | Wazuh agent `001` shown Active | Existing recovered screenshot |
+| ![wazuh](SOC-Automation-Lab-AWS/screenshots/01-wazuh-agent-active.png) | Wazuh agent `001` shown Active | Existing recovered screenshot |
 | `02-sysmon-events-in-wazuh.png` | Sysmon Operational events searchable in Wazuh; 46 hits shown | Existing recovered screenshot |
 | `03-shuffle-sha256-extraction.png` | Regex capture returned `SUCCESS` / `found: true` | Existing recovered screenshot |
 | `04-virustotal-http-200.png` | VirusTotal node returned HTTP `200` | Existing recovered screenshot |
