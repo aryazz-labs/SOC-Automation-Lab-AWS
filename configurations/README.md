@@ -1,7 +1,7 @@
-# Configuration Files
+# Configuration artifacts
 
-`ossec.conf.example` contains only the relevant Sysmon event-channel collection block recovered from the project notes. It is a minimal excerpt, not a complete agent configuration.
+- `windows-agent-ossec.conf.example` is a focused, sanitized excerpt of the deployed Windows agent configuration. The live manager address is replaced with `[WAZUH_MANAGER_ADDRESS]`.
+- `ossec.conf.example` is the minimal Sysmon Operational event-channel collection block.
+- `sysmonconfig.xml` is the actual XML file uploaded from the Windows lab. Its hash, schema version, installation history, and upstream attribution are recorded in `sysmonconfig-source.md`.
 
-The original Sysmon configuration file and full Wazuh rule XML were not recovered. Add only the exact files used in the lab, and verify their redistribution terms before publishing third-party content.
-
-Before committing configuration files, remove API keys, passwords, tokens, private keys, public endpoints, and machine-specific values that do not need to be public.
+The Sysmon configuration is derived from a third-party Sysmon Modular configuration. See `../licenses/SYSMON-MODULAR-license.md` before redistributing or modifying it. The exact source commit/release is not pinned in the uploaded XML.
