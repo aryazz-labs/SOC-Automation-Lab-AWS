@@ -1,0 +1,22 @@
+# Secrets and local environment files
+.env
+.env.*
+*.pem
+*.key
+*credentials*
+*secret*
+secrets/
+
+# Local exports and temporary files
+*.log
+*.tmp
+*.bak
+*.swp
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
