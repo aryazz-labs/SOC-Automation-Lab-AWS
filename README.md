@@ -1,135 +1,121 @@
 # AWS-Based SOC Automation Lab
 
-**End-to-end endpoint monitoring, SIEM detection, threat-intelligence enrichment, and alert automation**
+**End-to-end endpoint monitoring, SIEM detection, threat-intelligence enrichment and alert automation**
 
 | | |
 |---|---|
 | Author | Aryan Baloria |
+| Project type | Hands-on SOC engineering lab |
 | Endpoint | Windows 11 Pro VM (VirtualBox) |
 | SIEM | Wazuh 4.14.10 on AWS EC2 |
-| Telemetry | Sysmon |
+| Telemetry | Sysmon 15.22 |
 | SOAR | Shuffle Cloud |
 | Threat intelligence | VirusTotal v3 |
-| Alert management | TheHive 5.8.1 |
-
-> This repository documents a hands-on lab implementation: endpoint telemetry collection, SIEM detection, SOAR orchestration, hash enrichment, TheHive alert creation, and email notification.
+| Alert management | TheHive 5.8.1-1 |
+| Evidence period | November 2026 |
 
 ## Project overview
 
-A Windows 11 Pro VM was monitored using Sysmon and the Wazuh agent. Wazuh collected the Sysmon Operational event channel and evaluated custom rule `100002` (Level `12`) during a controlled `mimikatz.exe` process-execution test.
+This project demonstrates an endpoint-to-alert workflow built and tested in an isolated lab. Sysmon generated Windows telemetry; the Wazuh agent collected the Sysmon Operational channel; a custom Wazuh rule detected a controlled `mimikatz.exe` process-execution event. Wazuh forwarded the alert to Shuffle, where a regex extracted the SHA-256 hash and VirusTotal returned a file report. Shuffle then branched to a generic HTTP action that created a TheHive alert and a separate Email action that sent a notification.
 
-The selected alert was forwarded to Shuffle. The workflow extracted the SHA256 hash, queried VirusTotal v3, and then branched into two independent actions: an HTTP request to TheHive's alert API and a separate email notification.
-
-The project record reports VirusTotal HTTP `200`, TheHive HTTP `201` alert creation, a visible TheHive alert, and email delivery. The email delivery is owner-reported; an inbox screenshot was not recovered.
+The captured successful Shuffle execution was marked `FINISHED`: SHA-256 extraction succeeded, VirusTotal returned HTTP `200`, TheHive returned HTTP `201`, and the Email action reported success.
 
 ## Architecture
 
 ```mermaid
 flowchart TD
-  subgraph Endpoint["Endpoint - VirtualBox"]
-    A["Windows 11 Pro VM"] --> B["Sysmon"]
-    B --> C["Wazuh Agent"]
-  end
-  subgraph SIEM["SIEM - AWS EC2"]
-    D["Wazuh Manager"] --> E["Wazuh Indexer"]
-  end
-  subgraph SOAR["SOAR - Shuffle Cloud"]
-    F["Webhook"] --> G["SHA256 extraction"]
-    G --> H["VirusTotal v3"]
-    H --> I["HTTP action"]
-    H --> J["Email action"]
-  end
-  subgraph AlertManagement["Alert management"]
-    K["TheHive alert"]
-  end
-  C --> D
-  D --> F
-  I --> K
+  A[Windows 11 Pro VM] --> B[Sysmon]
+  B --> C[Wazuh Agent]
+  C --> D[Wazuh Manager / Indexer on AWS EC2]
+  D --> E[Shuffle Webhook]
+  E --> F[Shuffle Tools: SHA256 extraction]
+  F --> G[VirusTotal v3]
+  G --> H[HTTP action: TheHive Alert API]
+  G --> I[Email notification]
+  H --> J[TheHive alert]
 ```
 
-**Workflow detail:** The final recovered Shuffle canvas shows HTTP and Email as separate branches from VirusTotal. Email does not depend on the TheHive HTTP action. See [architecture documentation](docs/architecture.md).
+The final workflow branches independently from VirusTotal to HTTP and Email. The email action is not downstream of the TheHive HTTP action. See [architecture](docs/architecture.md) and [workflow reference](playbooks/shuffle_workflow_reference.md).
 
 ## Lab environment
 
 | Component | Recorded configuration |
 |---|---|
 | Endpoint | Windows 11 Pro VM in VirtualBox |
-| Sysmon | Endpoint telemetry; Sysmon Operational channel |
+| Sysmon | Version `15.22` recorded; uploaded configuration schema `4.91` |
 | Wazuh Agent | `wazah-agent-windows`, ID `001`, version `4.14.10` |
-| Wazuh Manager | AWS EC2, Ubuntu Server 24.04, Wazuh `4.14.10` |
+| Wazuh Manager | Ubuntu Server 24.04, Wazuh `4.14.10` |
 | Wazuh Indexer | Wazuh `4.14.10` |
 | Filebeat | `7.10.2` |
 | SOAR | Shuffle Cloud |
 | Threat intelligence | VirusTotal v3 |
 | Alert management | TheHive `5.8.1-1` |
 
-Wazuh and TheHive were deployed on separate EC2 instances in AWS region `ap-southeast-2` (Sydney). Public IP addresses and credentials are omitted.
+Wazuh and TheHive were deployed on separate EC2 instances in AWS region `ap-southeast-2` (Sydney). Public IP addresses, credentials and webhook URLs are excluded from the public artifacts.
 
 ## Detection use case
 
-| Attribute | Observed value |
+| Attribute | Verified value |
 |---|---|
 | Wazuh rule ID | `100002` |
-| Alert level | `12` |
+| Wazuh level | `12` |
 | Description | `SOC-Lab: Mimikatz execution detected on Windows endpoint.` |
-| Event source | Sysmon Event ID `1` (Process Create) |
-| Process | `mimikatz.exe` |
-| Parent process | Windows PowerShell |
-| File version | `2.2.0.0` |
-| SHA256 | `61C0810A23580CF492A6BA4F7654566108331E7A4134C968C2D6A05261B2D8A1` |
+| Match group | `sysmon_event1` |
+| Match field | `win.eventdata.originalFileName` |
+| Match | `(?i)mimikatz\.exe` |
+| Event | Sysmon Event ID `1` — Process Create |
+| Wazuh ATT&CK mapping | `T1003` — OS Credential Dumping |
 
-This controlled test demonstrates process execution, not successful credential dumping or credential compromise. The exact deployed rule XML has not yet been recovered; see [detection notes](detections/README.md).
+The Sysmon event's `RuleName` metadata also contained `T1036` (Masquerading). That value comes from Sysmon configuration metadata and is distinct from the Wazuh rule's `T1003` mapping. The alert proves process execution, not successful credential dumping or credential compromise.
 
-## Automation workflow
+See [the actual custom rule](detections/wazuh_mimikatz_rule.xml), [validation record](detections/rule-validation.md), and [test cases](detections/test-cases.md).
 
-1. Webhook receives the selected Wazuh alert.
-2. Shuffle Tools extracts SHA256 using `SHA256=([0-9A-Fa-f]{64})`.
-3. VirusTotal v3 looks up the hash.
-4. HTTP action sends a structured alert to TheHive's `/api/v1/alert` endpoint.
-5. Email action sends a separate notification.
+## End-to-end validation
 
-The generic HTTP action was used after the native Shuffle TheHive action encountered a compatibility/parameter issue. TheHive alert creation is not the same as case creation. See [Shuffle workflow reference](playbooks/shuffle_workflow_reference.md).
+| Stage | Captured result |
+|---|---|
+| Sysmon | Event ID `1` captured for `mimikatz.exe` |
+| Wazuh | Rule `100002`, Level `12`; alert ID `1794526316.3902037` |
+| Shuffle Tools | `success: true`, `found: true` for SHA-256 extraction |
+| VirusTotal | HTTP `200`, `success: true`; five sandbox verdicts categorized malicious |
+| TheHive | HTTP `201`; alert ID `~1192048`; `observableCount: 0` |
+| Email | Shuffle Email action reported `Email was successfully sent` |
 
-## Validation and evidence
+See the [SOC incident report](SOC-Project-Report.md) and [evidence index](docs/evidence-index.md) for provenance and caveats.
 
-| Validation | Recorded result | Evidence |
-|---|---|---|
-| Wazuh agent | Agent `001` shown Active | [Screenshot](screenshots/01-wazuh-agent-active.png) |
-| Sysmon collection | Sysmon Operational events searchable in Wazuh; 46 hits shown | [Screenshot](screenshots/02-sysmon-events-in-wazuh.png) |
-| SHA256 extraction | Shuffle Tools `SUCCESS`, `found: true` | [Screenshot](screenshots/03-shuffle-sha256-extraction.png) |
-| VirusTotal | HTTP `200`; file object returned | [Screenshot](screenshots/04-virustotal-http-200.png) |
-| Workflow topology | HTTP and Email shown as separate VirusTotal branches | [Screenshot](screenshots/05-shuffle-workflow.png) |
-| TheHive | Created alert visible | [Screenshot](screenshots/06-thehive-alert-created.png) |
-| Email delivery | Reported received by project owner | [Screenshot](screenshots/07-email-notification-received.png) |
+## Security observations
 
-See [the evidence index](docs/evidence-index.md) for screenshot scope and limitations.
+The 13 November 2026 AWS screenshots showed TheHive TCP `9000` open to `0.0.0.0/0`, and Wazuh TCP `1514` and `1515` open to `0.0.0.0/0`. The workflow export also showed an unauthenticated POST webhook trigger and HTTP communication to TheHive. These are recorded security findings, not changes made by this project package. See [security review](docs/security-review.md).
+
+The raw Shuffle export contained sensitive configuration values and is not included. A sanitized, non-importable reference export is provided instead. Sanitization does not revoke or rotate live credentials.
 
 ## Repository guide
 
 | Path | Purpose |
 |---|---|
-| [Architecture](docs/architecture.md) | Architecture, data flow, trust boundaries |
-| [Walkthrough](docs/walkthrough.md) | Implementation walkthrough |
-| [Alert investigation](docs/alert-investigation.md) | SOC investigation record |
-| [Troubleshooting](docs/troubleshooting.md) | Issues and recorded workarounds |
-| [Evidence index](docs/evidence-index.md) | Screenshot evidence and limitations |
-| [Detections](detections/README.md) | Wazuh detection notes |
-| [Configurations](configurations/README.md) | Sanitized configuration excerpts |
-| [Shuffle playbook](playbooks/shuffle_workflow_reference.md) | Workflow reference |
-| [Screenshots](screenshots/README.md) | Recovered visual evidence |
-| [Security notes](SECURITY-NOTES.md) | Security and publication notes |
+| [`SOC-Project-Report.md`](SOC-Project-Report.md) | Complete analyst-style project report |
+| [`docs/architecture.md`](docs/architecture.md) | Architecture and data flow |
+| [`docs/walkthrough.md`](docs/walkthrough.md) | Implementation walkthrough |
+| [`docs/soc-incident-report.md`](docs/soc-incident-report.md) | Correlated SOC investigation report |
+| [`docs/troubleshooting.md`](docs/troubleshooting.md) | Build issues and recorded workarounds |
+| [`docs/security-review.md`](docs/security-review.md) | AWS and workflow security observations |
+| [`docs/evidence-index.md`](docs/evidence-index.md) | Screenshot and sample provenance |
+| [`detections/`](detections/README.md) | Actual Wazuh rule and validation evidence |
+| [`configurations/`](configurations/README.md) | Windows agent excerpt and actual Sysmon config |
+| [`playbooks/`](playbooks/shuffle_workflow_reference.md) | Workflow reference and incident-response playbooks |
+| [`samples/`](samples/wazuh-alert-100002.json) | Sanitized JSON and output captures |
+| [`threat-intelligence/`](threat-intelligence/mimikatz-hash-analysis.md) | Hash enrichment analysis |
+| [`screenshots/`](screenshots/README.md) | Selected sanitized evidence images |
 
-## Security considerations and limitations
+## Limitations
 
-- TheHive API was tested over HTTP on port `9000`; HTTP does not encrypt credentials or alert data in transit. Use HTTPS beyond an isolated lab.
-- Restrict TheHive inbound access to trusted sources. A historical lab screenshot showed port `9000` configured broadly; verify the current AWS security-group rule and remove any `0.0.0.0/0` exposure.
-- A previously uploaded Shuffle configuration screenshot contained a bearer credential and is intentionally excluded. Revoke/rotate it if still active.
-- Keep API keys in Shuffle credential storage. Never commit tokens, authorization headers, passwords, private keys, or webhook URLs.
-- VirusTotal HTTP `200` means the API returned a report; it is not itself a malware verdict.
-- The workflow creates a TheHive **alert**, not a case.
-- Automated endpoint isolation, process termination, and remediation were not implemented.
-- Production-grade retries, deduplication, and failure handling were not implemented or fully tested. A duplicate source reference was observed to return HTTP `400`.
-- The exact deployed Wazuh rule XML and Shuffle workflow JSON exports are not currently included. They must be exported from the live systems; no mock exports are presented as deployed configuration.
+- The workflow creates a TheHive alert, not a case.
+- No observables were attached to the returned TheHive alert (`observableCount: 0`).
+- Endpoint isolation, process termination and automated remediation were not implemented.
+- Negative/false-positive test results were not provided.
+- Production retry, deduplication and failure-handling behavior was not fully implemented or validated.
+- The uploaded Shuffle export's later validation metadata shows an HTTP `400` issue on HTTP 1; this is separate from the earlier successful run returning HTTP `201`.
+- VirusTotal aggregate `last_analysis_stats` values were not visible in the copied output; no detection ratio is claimed.
 
 ## Author
 
