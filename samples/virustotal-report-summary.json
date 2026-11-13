@@ -1,0 +1,97 @@
+{
+  "capture_type": "sanitized_subset_of_actual_shuffle_node_output",
+  "http_status": 200,
+  "success": true,
+  "data": {
+    "id": "61c0810a23580cf492a6ba4f7654566108331e7a4134c968c2d6a05261b2d8a1",
+    "type": "file",
+    "attributes": {
+      "sha256": "61c0810a23580cf492a6ba4f7654566108331e7a4134c968c2d6a05261b2d8a1",
+      "meaningful_name": "mimikatz.exe",
+      "type_description": "Win32 EXE",
+      "size": 1355264,
+      "reputation": -118,
+      "signature_info": {
+        "file version": "2.2.0.0",
+        "description": "mimikatz for Windows",
+        "original name": "mimikatz.exe",
+        "product": "mimikatz",
+        "copyright": "Copyright (c) 2007 - 2021 gentilkiwi (Benjamin DELPY)"
+      },
+      "sandbox_verdicts": {
+        "Zenbox": {
+          "category": "malicious",
+          "malware_names": [
+            "Mimikatz"
+          ],
+          "confidence": 76
+        },
+        "C2AE": {
+          "category": "malicious",
+          "malware_names": [
+            "Mimikatz"
+          ],
+          "confidence": 50
+        },
+        "Yomi Hunter": {
+          "category": "malicious",
+          "malware_classification": [
+            "MALWARE"
+          ]
+        },
+        "VMRay": {
+          "category": "malicious",
+          "malware_names": [
+            "Mal/Generic-S",
+            "Mimikatz"
+          ]
+        },
+        "CAPE Sandbox": {
+          "category": "malicious",
+          "malware_names": [
+            "Mimikatz"
+          ]
+        }
+      },
+      "popular_threat_classification": {
+        "suggested_threat_label": "trojan.mimikatz/stealer",
+        "popular_threat_name": [
+          {
+            "value": "mimikatz",
+            "count": 32
+          },
+          {
+            "value": "stealer",
+            "count": 2
+          },
+          {
+            "value": "abuse",
+            "count": 1
+          }
+        ],
+        "popular_threat_category": [
+          {
+            "value": "trojan",
+            "count": 14
+          },
+          {
+            "value": "hacktool",
+            "count": 13
+          },
+          {
+            "value": "pua",
+            "count": 8
+          }
+        ]
+      },
+      "total_votes": {
+        "harmless": 6,
+        "malicious": 16
+      },
+      "unique_sources": 3089,
+      "times_submitted": 30076,
+      "last_analysis_results_count": 75
+    }
+  },
+  "interpretation_note": "HTTP 200 confirms report retrieval. VirusTotal reputation, sandbox verdicts, community votes and engine results are enrichment evidence, not proof of credential theft or a substitute for endpoint investigation. The copied output did not expose last_analysis_stats values, so no antivirus detection ratio is asserted."
+}

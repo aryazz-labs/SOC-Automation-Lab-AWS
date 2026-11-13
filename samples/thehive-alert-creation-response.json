@@ -1,0 +1,39 @@
+{
+  "http_status": 201,
+  "success": true,
+  "body": {
+    "_id": "~1192048",
+    "_type": "Alert",
+    "_createdBy": "[REDACTED_USER]",
+    "_createdAt": 1794526320778,
+    "type": "wazuh-alert",
+    "source": "Wazuh",
+    "sourceRef": "1794526316.3902037",
+    "title": "SOC-Lab: Mimikatz execution detected on Windows endpoint.",
+    "description": "WAZUH SECURITY ALERT Agent: wazah-agent-windows Rule ID: 100002 Detection: SOC-Lab: Mimikatz execution detected on Windows endpoint. [remaining description retained in original TheHive record]",
+    "severity": 3,
+    "severityLabel": "HIGH",
+    "date": 1794526320753,
+    "tags": [
+      "malware",
+      "sysmon",
+      "virustotal",
+      "wazuh",
+      "windows"
+    ],
+    "tlp": 2,
+    "tlpLabel": "AMBER",
+    "pap": 2,
+    "papLabel": "AMBER",
+    "follow": true,
+    "customFields": [],
+    "observableCount": 0,
+    "status": "New",
+    "stage": "New",
+    "extraData": {},
+    "newDate": 1794526320757,
+    "timeToDetect": 4
+  },
+  "request_url": "http://[THEHIVE_HOST]:9000/api/v1/alert",
+  "request_id": "[REDACTED]"
+}

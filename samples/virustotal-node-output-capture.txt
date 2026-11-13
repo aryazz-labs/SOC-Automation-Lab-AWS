@@ -1,0 +1,850 @@
+"Results for Virustotal_v3_1":{6 items
+"status":200
+"body":{1 item
+"data":{4 items
+"id":"61c0810a23580cf492a6ba4f7654566108331e7a4134c968c2d6a05261b2d8a1"
+"type":"file"
+"links":{1 item
+"self":"https://www.virustotal.com/api/v3/files/61c0810a23580cf492a6ba4f7654566108331e7a4134c968c2d6a05261b2..."
+}
+"attributes":{41 items
+"last_submission_date":1794516682
+"type_tags":[5 items
+0:"executable"
+1:"windows"
+2:"win32"
+3:"pe"
+4:"peexe"
+]
+"reputation":-118
+"authentihash":"d890794d6fbeee1d95191ec05478662ff7f651640d4091618f7bff25086e99b3"
+"sandbox_verdicts":{5 items
+"Zenbox":{5 items
+"category":"malicious"
+"malware_classification":[2 items
+0:"MALWARE"
+1:"TROJAN"
+]
+"sandbox_name":"Zenbox"
+"malware_names":[1 item
+0:"Mimikatz"
+]
+"confidence":76
+}
+"C2AE":{5 items
+"category":"malicious"
+"malware_classification":[1 item
+0:"MALWARE"
+]
+"sandbox_name":"C2AE"
+"malware_names":[1 item
+0:"Mimikatz"
+]
+"confidence":50
+}
+"Yomi Hunter":{3 items
+"category":"malicious"
+"sandbox_name":"Yomi Hunter"
+"malware_classification":[1 item
+0:"MALWARE"
+]
+}
+"VMRay":{4 items
+"category":"malicious"
+"sandbox_name":"VMRay"
+"malware_classification":[1 item
+0:"MALWARE"
+]
+"malware_names":[2 items
+0:"Mal/Generic-S"
+1:"Mimikatz"
+]
+}
+"CAPE Sandbox":{4 items
+"category":"malicious"
+"malware_classification":[1 item
+0:"MALWARE"
+]
+"sandbox_name":"CAPE Sandbox"
+"malware_names":[1 item
+0:"Mimikatz"
+]
+}
+}
+"type_description":"Win32 EXE"
+"last_modification_date":1794521033
+"signature_info":{6 items
+"file version":"2.2.0.0"
+"description":"mimikatz for Windows"
+"original name":"mimikatz.exe"
+"product":"mimikatz"
+"copyright":"Copyright (c) 2007 - 2021 gentilkiwi (Benjamin DELPY)"
+"internal name":"mimikatz"
+}
+"tlsh":"T129552901A7E90098F2B79AB59EF29516DBB378D51834C30F02A88A5F1F73F519D29732"
+"magic":"PE32+ executable (console) x86-64, for MS Windows"
+"meaningful_name":"mimikatz.exe"
+"popular_threat_classification":{3 items
+"suggested_threat_label":"trojan.mimikatz/stealer"
+"popular_threat_name":[3 items
+0:{2 items
+"value":"mimikatz"
+"count":32
+}
+1:{2 items
+"value":"stealer"
+"count":2
+}
+2:{2 items
+"value":"abuse"
+"count":1
+}
+]
+"popular_threat_category":[3 items
+0:{2 items
+"value":"trojan"
+"count":14
+}
+1:{2 items
+"value":"hacktool"
+"count":13
+}
+2:{2 items
+"value":"pua"
+"count":8
+}
+]
+}
+"vhash":"016066651d1555651612z1a2z8d37093b1z50400290c0106001303dz"
+"last_analysis_results":{75 items
+"Lionic":{6 items
+"method":"blacklist"
+"engine_name":"Lionic"
+"engine_version":"8.16"
+"engine_update":"20261112"
+"category":"undetected"
+"result":NULL
+}
+"tehtris":{6 items
+"method":"blacklist"
+"engine_name":"tehtris"
+"engine_version":"v0.1.4"
+"engine_update":"20261112"
+"category":"undetected"
+"result":NULL
+}
+"MicroWorld-eScan":{6 items
+"method":"blacklist"
+"engine_name":"MicroWorld-eScan"
+"engine_version":"14.0.409.0"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"Application.Riskware.Mimikatz.1"
+}
+"ClamAV":{6 items
+"method":"blacklist"
+"engine_name":"ClamAV"
+"engine_version":"1.5.4.0"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"Win.Dropper.Mimikatz-9778171-1"
+}
+"CTX":{6 items
+"method":"blacklist"
+"engine_name":"CTX"
+"engine_version":"2026.10.27.1"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"exe.unknown.mimikatz"
+}
+"CAT-QuickHeal":{6 items
+"method":"blacklist"
+"engine_name":"CAT-QuickHeal"
+"engine_version":"22.00"
+"engine_update":"20261110"
+"category":"malicious"
+"result":"HackTool.Mimikatz.S13719268"
+}
+"ALYac":{6 items
+"method":"blacklist"
+"engine_name":"ALYac"
+"engine_version":"2.0.0.10"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"Misc.HackTool.Mimikatz"
+}
+"Cylance":{6 items
+"method":"blacklist"
+"engine_name":"Cylance"
+"engine_version":"3.0.0.0"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"Unsafe"
+}
+"Sangfor":{6 items
+"method":"blacklist"
+"engine_name":"Sangfor"
+"engine_version":"2.22.3.0"
+"engine_update":"20261110"
+"category":"malicious"
+"result":"Trojan.Win32.Save.a"
+}
+"K7AntiVirus":{6 items
+"method":"blacklist"
+"engine_name":"K7AntiVirus"
+"engine_version":"14.92.61456"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"Riskware ( 005ce46a1 )"
+}
+"K7GW":{6 items
+"method":"blacklist"
+"engine_name":"K7GW"
+"engine_version":"14.92.61456"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"Riskware ( 005ce46a1 )"
+}
+"CrowdStrike":{6 items
+"method":"blacklist"
+"engine_name":"CrowdStrike"
+"engine_version":"1.0"
+"engine_update":"20251219"
+"category":"malicious"
+"result":"win/malicious_confidence_100% (W)"
+}
+"huorong":{6 items
+"method":"blacklist"
+"engine_name":"huorong"
+"engine_version":"86d180f:86d180f:f5467f0:f5467f0"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"HackTool/Mikatz.k"
+}
+"VirIT":{6 items
+"method":"blacklist"
+"engine_name":"VirIT"
+"engine_version":"9.5.1338"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"HackTool.Win64.Genus.BBC"
+}
+"Symantec":{6 items
+"method":"blacklist"
+"engine_name":"Symantec"
+"engine_version":"1.22.0.0"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"Hacktool.Mimikatz"
+}
+"Elastic":{6 items
+"method":"blacklist"
+"engine_name":"Elastic"
+"engine_version":"4.0.299"
+"engine_update":"20261111"
+"category":"malicious"
+"result":"Windows.Hacktool.Mimikatz"
+}
+"ESET-NOD32":{6 items
+"method":"blacklist"
+"engine_name":"ESET-NOD32"
+"engine_version":"18.2.18.0"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"Win64/Riskware.Mimikatz.G application"
+}
+"APEX":{6 items
+"method":"blacklist"
+"engine_name":"APEX"
+"engine_version":"6.840"
+"engine_update":"20261110"
+"category":"malicious"
+"result":"Malicious"
+}
+"Paloalto":{6 items
+"method":"blacklist"
+"engine_name":"Paloalto"
+"engine_version":"0.9.0.1003"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"generic.ml"
+}
+"Cynet":{6 items
+"method":"blacklist"
+"engine_name":"Cynet"
+"engine_version":"4.0.3.4"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"Malicious (score: 100)"
+}
+"Alibaba":{6 items
+"method":"blacklist"
+"engine_name":"Alibaba"
+"engine_version":"0.3.0.5"
+"engine_update":"20190527"
+"category":"malicious"
+"result":"Trojan:Win32/Mimikatz.10401874"
+}
+"NANO-Antivirus":{6 items
+"method":"blacklist"
+"engine_name":"NANO-Antivirus"
+"engine_version":"1.0.170.26895"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"Trojan.Win64.Mimikatz.jsrqig"
+}
+"SUPERAntiSpyware":{6 items
+"method":"blacklist"
+"engine_name":"SUPERAntiSpyware"
+"engine_version":"5.6.0.1032"
+"engine_update":"20261110"
+"category":"malicious"
+"result":"Hack.Tool/Gen-Mimikatz"
+}
+"Rising":{6 items
+"method":"blacklist"
+"engine_name":"Rising"
+"engine_version":"25.0.0.28"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"HackTool.Mimikatz!1.B3A8 (CLASSIC)"
+}
+"Emsisoft":{6 items
+"method":"blacklist"
+"engine_name":"Emsisoft"
+"engine_version":"2024.8.0.61147"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"Application.Riskware.Mimikatz.1 (B)"
+}
+"F-Secure":{6 items
+"method":"blacklist"
+"engine_name":"F-Secure"
+"engine_version":"18.10.1547.307"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"Trojan.TR/W64.MalwareX"
+}
+"DrWeb":{6 items
+"method":"blacklist"
+"engine_name":"DrWeb"
+"engine_version":"7.0.76.8280"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"Tool.Mimikatz.1232"
+}
+"VIPRE":{6 items
+"method":"blacklist"
+"engine_name":"VIPRE"
+"engine_version":"6.0.0.35"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"Application.Riskware.Mimikatz.1"
+}
+"McAfeeD":{6 items
+"method":"blacklist"
+"engine_name":"McAfeeD"
+"engine_version":"1.2.0.16534"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"Trojan:Win/Mimikatz.EAH"
+}
+"Trapmine":{6 items
+"method":"blacklist"
+"engine_name":"Trapmine"
+"engine_version":"4.0.17.0"
+"engine_update":"20261026"
+"category":"malicious"
+"result":"malicious.high.ml.score"
+}
+"CMC":{6 items
+"method":"blacklist"
+"engine_name":"CMC"
+"engine_version":"2.4.2022.1"
+"engine_update":"20261110"
+"category":"undetected"
+"result":NULL
+}
+"Sophos":{6 items
+"method":"blacklist"
+"engine_name":"Sophos"
+"engine_version":"3.7.2.1"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"ATK/Mimikatz-BJ"
+}
+"Ikarus":{6 items
+"method":"blacklist"
+"engine_name":"Ikarus"
+"engine_version":"6.5.4.0"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"Trojan.Mimikatz"
+}
+"GData":{6 items
+"method":"blacklist"
+"engine_name":"GData"
+"engine_version":"GD:27.46693AVA:64.32217"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"Win64.Trojan-Stealer.Mimikatz.J"
+}
+"Jiangmin":{6 items
+"method":"blacklist"
+"engine_name":"Jiangmin"
+"engine_version":"16.0.100"
+"engine_update":"20261111"
+"category":"malicious"
+"result":"Trojan.PSW.Mimikatz.pv"
+}
+"Webroot":{6 items
+"method":"blacklist"
+"engine_name":"Webroot"
+"engine_version":"1.9.0.8"
+"engine_update":"20250227"
+"category":"malicious"
+"result":"Win.Trojan.Gen"
+}
+"Varist":{6 items
+"method":"blacklist"
+"engine_name":"Varist"
+"engine_version":"6.6.1.3"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"W64/S-b61adc75!Eldorado"
+}
+"Avira":{6 items
+"method":"blacklist"
+"engine_name":"Avira"
+"engine_version":"8.3.3.24"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"TR/W64.MalwareX"
+}
+"Antiy-AVL":{6 items
+"method":"blacklist"
+"engine_name":"Antiy-AVL"
+"engine_version":"3.0"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"HackTool/Win64.Mimikatz"
+}
+"Kingsoft":{6 items
+"method":"blacklist"
+"engine_name":"Kingsoft"
+"engine_version":"None"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"Win32.Troj.Undef.a"
+}
+"Gridinsoft":{6 items
+"method":"blacklist"
+"engine_name":"Gridinsoft"
+"engine_version":"1.0.262.174"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"Risk.Win64.Gen.dd!i"
+}
+"Xcitium":{6 items
+"method":"blacklist"
+"engine_name":"Xcitium"
+"engine_version":"39110"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"Malware@#2e2m06ht3u8w"
+}
+"Arcabit":{6 items
+"method":"blacklist"
+"engine_name":"Arcabit"
+"engine_version":"2025.0.0.23"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"Application.Riskware.Mimikatz.1"
+}
+"ViRobot":{6 items
+"method":"blacklist"
+"engine_name":"ViRobot"
+"engine_version":"2026-11-12.03"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"HackTool.S.Mimikatz.1355264"
+}
+"ZoneAlarm":{6 items
+"method":"blacklist"
+"engine_name":"ZoneAlarm"
+"engine_version":"6.28-119762423"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"ATK/Mimikatz-BJ"
+}
+"Microsoft":{6 items
+"method":"blacklist"
+"engine_name":"Microsoft"
+"engine_version":"1.26100"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"HackTool:Win32/Mimikatz!pz"
+}
+"Google":{6 items
+"method":"blacklist"
+"engine_name":"Google"
+"engine_version":"1794506464"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"Detected"
+}
+"AhnLab-V3":{6 items
+"method":"blacklist"
+"engine_name":"AhnLab-V3"
+"engine_version":"3.30.3.10716"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"Trojan/Win32.RL_Mimikatz.R366782"
+}
+"Acronis":{6 items
+"method":"blacklist"
+"engine_name":"Acronis"
+"engine_version":"1.2.0.121"
+"engine_update":"20240328"
+"category":"undetected"
+"result":NULL
+}
+"VBA32":{6 items
+"method":"blacklist"
+"engine_name":"VBA32"
+"engine_version":"5.7.1"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"Trojan.Win64.Mimikatz"
+}
+"TACHYON":{6 items
+"method":"blacklist"
+"engine_name":"TACHYON"
+"engine_version":"2026-11-12.02"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"Abuse-Worry/W64.Mimikatz.1355264"
+}
+"Malwarebytes":{6 items
+"method":"blacklist"
+"engine_name":"Malwarebytes"
+"engine_version":"3.1.0.301"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"Mimikatz.Spyware.Stealer.DDS"
+}
+"Panda":{6 items
+"method":"blacklist"
+"engine_name":"Panda"
+"engine_version":"4.6.4.2"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"HackingTool/Mimikatz"
+}
+"Zoner":{6 items
+"method":"blacklist"
+"engine_name":"Zoner"
+"engine_version":"2.2.2.0"
+"engine_update":"20261112"
+"category":"undetected"
+"result":NULL
+}
+"Tencent":{6 items
+"method":"blacklist"
+"engine_name":"Tencent"
+"engine_version":"1.0.0.1"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"Trojan.Win64.Mimikatz.a"
+}
+"Yandex":{6 items
+"method":"blacklist"
+"engine_name":"Yandex"
+"engine_version":"5.5.2.24"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"Trojan.Agent!RmbVaruywWw"
+}
+"SentinelOne":{6 items
+"method":"blacklist"
+"engine_name":"SentinelOne"
+"engine_version":"7.8.0.2"
+"engine_update":"20260924"
+"category":"malicious"
+"result":"Static AI - Malicious PE"
+}
+"Fortinet":{6 items
+"method":"blacklist"
+"engine_name":"Fortinet"
+"engine_version":"7.0.48.0"
+"engine_update":"20261112"
+"category":"malicious"
+"result":"Riskware/NetWalker"
+}
+"DeepInstinct":{6 items
+"method":"blacklist"
+"engine_name":"DeepInstinct"
+"engine_version":"5.0.0.8"
+"engine_update":"20260614"
+"category":"malicious"
+"result":"MALICIOUS"
+}
+"alibabacloud":{6 items
+"method":"blacklist"
+"engine_name":"alibabacloud"
+"engine_version":"2.2.0"
+"engine_update":"20250321"
+"category":"malicious"
+"result":"HackTool:Win/Mimikatz.FZ"
+}
+"Bkav":{6 items
+"method":"blacklist"
+"engine_name":"Bkav"
+"engine_version":NULL
+"engine_update":"20261112"
+"category":"timeout"
+"result":NULL
+}
+"TrendMicro":{6 items
+"method":"blacklist"
+"engine_name":"TrendMicro"
+"engine_version":"24.550.0.1002"
+"engine_update":"20261112"
+"category":"timeout"
+"result":NULL
+}
+"TrendMicro-HouseCall":{6 items
+"method":"blacklist"
+"engine_name":"TrendMicro-HouseCall"
+"engine_version":"24.550.0.1002"
+"engine_update":"20261112"
+"category":"timeout"
+"result":NULL
+}
+"Avast":{6 items
+"method":"blacklist"
+"engine_name":"Avast"
+"engine_version":"23.9.8494.0"
+"engine_update":"20261112"
+"category":"timeout"
+"result":NULL
+}
+"Kaspersky":{6 items
+"method":"blacklist"
+"engine_name":"Kaspersky"
+"engine_version":"22.0.1.28"
+"engine_update":"20261112"
+"category":"timeout"
+"result":NULL
+}
+"BitDefender":{6 items
+"method":"blacklist"
+"engine_name":"BitDefender"
+"engine_version":"7.2"
+"engine_update":"20261112"
+"category":"timeout"
+"result":NULL
+}
+"TrellixENS":{6 items
+"method":"blacklist"
+"engine_name":"TrellixENS"
+"engine_version":"6.0.6.653"
+"engine_update":"20261112"
+"category":"timeout"
+"result":NULL
+}
+"MaxSecure":{6 items
+"method":"blacklist"
+"engine_name":"MaxSecure"
+"engine_version":"4.0.3.0"
+"engine_update":"20261112"
+"category":"timeout"
+"result":NULL
+}
+"AVG":{6 items
+"method":"blacklist"
+"engine_name":"AVG"
+"engine_version":"23.9.8494.0"
+"engine_update":"20261112"
+"category":"timeout"
+"result":NULL
+}
+"Skyhigh":{6 items
+"method":"blacklist"
+"engine_name":"Skyhigh"
+"engine_version":NULL
+"engine_update":"20261112"
+"category":"failure"
+"result":NULL
+}
+"Zillya":{6 items
+"method":"blacklist"
+"engine_name":"Zillya"
+"engine_version":"2.0.0.5728"
+"engine_update":"20261112"
+"category":"failure"
+"result":NULL
+}
+"Avast-Mobile":{6 items
+"method":"blacklist"
+"engine_name":"Avast-Mobile"
+"engine_version":"261112-02"
+"engine_update":"20261112"
+"category":"type-unsupported"
+"result":NULL
+}
+"SymantecMobileInsight":{6 items
+"method":"blacklist"
+"engine_name":"SymantecMobileInsight"
+"engine_version":"2.0"
+"engine_update":"20260123"
+"category":"type-unsupported"
+"result":NULL
+}
+"BitDefenderFalx":{6 items
+"method":"blacklist"
+"engine_name":"BitDefenderFalx"
+"engine_version":"2.0.936"
+"engine_update":"20261022"
+"category":"type-unsupported"
+"result":NULL
+}
+"Trustlook":{6 items
+"method":"blacklist"
+"engine_name":"Trustlook"
+"engine_version":"1.0"
+"engine_update":"20261112"
+"category":"type-unsupported"
+"result":NULL
+}
+}
+"names":[58 items
+0:"file.exe"
+1:"mimikatz"
+2:"mimikatz.exe"
+3:"mi_protected.exe.protecting.tmp"
+4:"n.exe"
+5:"LoadThatPE.exe"
+6:"109"
+7:"m.exe"
+8:"mimikatz64.exe"
+9:"mimikatz.x64.exe"
+10:"mz.dat"
+11:"chrome.exe"
+12:"real_mimikatz.exe"
+13:"mk.172.25.1.125"
+14:"2.exe"
+15:"mimikatz.exe.bak"
+16:"639188527266165137_.webp"
+17:"pth_kk64.exe"
+18:"mimikatz.pdf"
+19:"lsass_dump.exe"
+20:"test.exe"
+21:"mimi.pdf"
+22:"103"
+23:"mimikaz.exe"
+24:"mimi.exe"
+25:"chrome-setup.exe"
+26:"custom_mimikatz (1).exe"
+27:"svcmgr.exe"
+28:"mim.exe"
+29:"Binary.mimikatz.exe"
+30:"mimikatz.png"
+31:"DumpStack.log.exe"
+32:"aa65550a1e5242628695c7d0a7aaa8be.exe"
+33:"lekmlgul.uof.exe"
+34:"modified_mimi.exe"
+35:"q5wv1lxr.bt4.exe"
+36:"bpefa0im.wg0.exe"
+37:"78053a099af54d98be9f874c2f0fd827.exe"
+38:"debe8f8b12fd47d4b7352d725622048a.exe"
+39:"windows_update.exe"
+40:"Or Hamra - Mimikatz 2026.exe"
+41:"mimikatz - hamra.exe"
+42:"surface-sample-02"
+43:"spotify.exe"
+44:"mimikatz.csv"
+45:"c40765d2-78cd-44c4-a149-b74ddc84f75a"
+46:"telkom.exe"
+47:"WinUpdateService.exe.exe"
+48:"toto.exe"
+49:"attachment1451887027221225758"
+50:"cmd.exe"
+51:"cleanfile.exe"
+52:"cato.exe"
+53:"yankze.exe"
+54:"update.exe"
+55:"mtz.exe"
+56:"prog.exe1302352994"
+57:"prog.exe2002211631"
+]
+"sha256":"61c0810a23580cf492a6ba4f7654566108331e7a4134c968c2d6a05261b2d8a1"
+"known_distributors":{4 items
+"distributors":[...]1 item
+"filenames":[...]1 item
+"products":[...]5 items
+"data_sources":[...]1 item
+}
+"filecondis":{2 items
+"dhash":"707c3e1e1e2e2304"
+"raw_md5":"cf360367021703b327d38eb5fce0a685"
+}
+"ssdeep":"24576:0CgjBAeu8iuUHGzkuBhzy2F+yVICFPC27rIlve3NuacODvsG:0CI7XBE2IuF64rIlmdii"
+"last_analysis_date":1794513509
+"pe_info":{...}11 items
+"sigma_analysis_stats":{4 items
+"critical":0
+"high":1
+"medium":2
+"low":0
+}
+"first_submission_date":1663616797
+"type_tag":"peexe"
+"trid":[...]5 items
+"sigma_analysis_results":[...]3 items
+"size":1355264
+"detectiteasy":{2 items
+"filetype":"PE64"
+"values":[...]3 items
+}
+"magika":"PEBIN"
+"sha1":"e3b6ea8c46fa831cec6f235a5cf48b38a4ae8d69"
+"tags":[...]7 items
+"unique_sources":3089
+"first_seen_itw_date":1663729719
+"md5":"29efd64dd3c7fe1e2b022b7ad73a1ba5"
+"type_extension":"exe"
+"total_votes":{2 items
+"harmless":6
+"malicious":16
+}
+"creation_date":1663602279
+"last_analysis_stats":{...}8 items
+"sigma_analysis_summary":{1 item
+"Sigma Integrated Rule Set (GitHub)":{4 items
+"critical":0
+"high":1
+"medium":2
+"low":0
+}
+}
+"times_submitted":30076
+"crowdsourced_yara_results":[...]25 items
+}
+}
+}
+"url":"https://www.virustotal.com/api/v3/files/61C0810A23580CF492A6BA4F7654566108331E7A4134C968C2D6A05261B2..."
+"headers":{9 items
+"content-type":"application/json"
+"vary":"Accept-Encoding"
+"content-encoding":"gzip"
+"x-cloud-trace-context":"2ac4d4e230b85fce7329dc4af5b1ca17"
+"date":"Thu, 12 Nov 2026 23:31:59 GMT"
+"server":"Google Frontend"
+"via":"1.1 google"
+"Alt-Svc":"h3=":443"; ma=2592000,h3-29=":443"; ma=2592000"
+"Transfer-Encoding":"chunked"
+}
+"cookies":{}0 items
+"success":true
+}

@@ -1,0 +1,32 @@
+{
+  "capture_type": "execution_summary_transcribed_from_shuffle_debug_screenshots",
+  "workflow_name": "SOC-Automation-Workflow",
+  "status": "FINISHED",
+  "source": "webhook",
+  "started_local": "2026-11-13 05:01:57 Asia/Kolkata",
+  "finished_local": "2026-11-13 05:02:01 Asia/Kolkata",
+  "nodes": {
+    "Shuffle Tools 1": {
+      "success": true,
+      "found": true,
+      "purpose": "extract SHA256"
+    },
+    "VirusTotal v3 1": {
+      "success": true,
+      "http_status": 200
+    },
+    "HTTP 1": {
+      "success": true,
+      "http_status": 201,
+      "purpose": "create TheHive alert"
+    },
+    "Email 1": {
+      "success": true,
+      "reason": "Email was successfully sent"
+    }
+  },
+  "workflow_topology": "VirusTotal v3 1 branches independently to HTTP 1 and Email 1.",
+  "wazuh_alert_id": "1794526316.3902037",
+  "thehive_alert_id": "~1192048",
+  "note": "This is an analyst-created summary of the visible successful execution output, not the raw Shuffle execution JSON."
+}

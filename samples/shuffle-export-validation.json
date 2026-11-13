@@ -1,0 +1,16 @@
+{
+  "capture_type": "validation_metadata_from_uploaded_shuffle_workflow_export",
+  "valid": false,
+  "changed_at_unix_ms": 1794567698000,
+  "last_valid_unix_ms": 1794526321000,
+  "validation_ran": true,
+  "total_problems": 1,
+  "errors": [
+    {
+      "app_name": "http",
+      "error": "Status 400 for action 'http 1'. Are the fields correct?",
+      "type": "configuration"
+    }
+  ],
+  "interpretation": "The uploaded workflow export's later validation metadata showed an HTTP 400 issue for the HTTP node. This is separate from the earlier successful execution whose HTTP node returned 201. The precise cause of this later validation error is not established by this metadata alone."
+}
