@@ -1,23 +1,24 @@
-# Wazuh Detection
+# Wazuh detection: Mimikatz process execution
 
-## Custom rule summary
+## Deployed rule details
 
 | Field | Observed value |
 |---|---|
 | Rule ID | `100002` |
-| Alert level | `12` |
+| Level | `12` |
 | Description | `SOC-Lab: Mimikatz execution detected on Windows endpoint.` |
-| Event source | Sysmon |
-| Event ID | `1` (Process Create) |
-| Process observed | `mimikatz.exe` |
-| Parent process observed | Windows PowerShell |
+| Parent event group | `sysmon_event1` |
+| Match field | `win.eventdata.originalFileName` |
+| Match expression | `(?i)mimikatz\.exe` |
+| Wazuh ATT&CK mapping | `T1003` — OS Credential Dumping (Credential Access) |
+| Event | Sysmon Event ID `1` — Process Create |
 
-The rule was validated during a controlled process-execution test in the isolated Windows lab VM. The test confirms detection of process execution; it does not prove successful credential dumping.
+The XML in `wazuh_mimikatz_rule.xml` is transcribed from the actual `/var/ossec/etc/rules/local_rules.xml` output provided by the project owner. The containing `<group>` is included.
 
-## ATT&CK mapping status
+## Analyst interpretation
 
-An earlier project note recorded T1036 (Masquerading), but the exact rule XML was not recovered and the mapping could not be independently verified. This repository therefore leaves the mapping unconfirmed. Check the actual `<mitre>` section in the deployed rule before adding a technique.
+The rule detects a process-creation event whose `OriginalFileName` field matches `mimikatz.exe`, case-insensitively, under the `sysmon_event1` group. It establishes that the process was observed; it does not establish successful credential dumping or credential compromise.
 
-## Exact rule XML
+The Sysmon event's own `eventdata.ruleName` field contained `technique_id=T1036,technique_name=Masquerading`. That is metadata from the Sysmon configuration and is distinct from the Wazuh rule's `<mitre><id>T1003</id></mitre>` mapping. Both are preserved as observed, not conflated.
 
-The exact XML contents of rule `100002` were not present in the recovered files. The live manager export is still required. Do not recreate the rule from a generic example and label it as the deployed rule. When recovered, save the sanitized exact rule as `wazuh_mimikatz_rule.xml` in this directory.
+See `rule-validation.md` for the recorded syntax test and alert evidence, and `test-cases.md` for verified vs. untested cases.
