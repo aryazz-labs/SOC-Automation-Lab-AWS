@@ -100,7 +100,7 @@ The generic HTTP action was used after the native Shuffle TheHive action encount
 | VirusTotal | HTTP `200`; file object returned | [Screenshot](screenshots/04-virustotal-http-200.png) |
 | Workflow topology | HTTP and Email shown as separate VirusTotal branches | [Screenshot](screenshots/05-shuffle-workflow.png) |
 | TheHive | Created alert visible | [Screenshot](screenshots/06-thehive-alert-created.png) |
-| Email delivery | Reported received by project owner | Inbox screenshot unavailable |
+| Email delivery | Reported received by project owner | [Screenshot](screenshots/07-email-notification-received.png) |
 
 See [the evidence index](docs/evidence-index.md) for screenshot scope and limitations.
 
