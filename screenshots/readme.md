@@ -19,4 +19,4 @@ See [the evidence index](../docs/evidence-index.md) for provenance and limits. P
 | `13-shuffle-thehive-and-email-success.png` | TheHive HTTP 201 and Email success |
 | `14-aws-wazuh-security-group-review.png` | Wazuh inbound security-group rules |
 | `15-aws-thehive-security-group-review.png` | TheHive inbound security-group rules |
-| `07-email-notification-received.png` | Email received on my Gmail|
+| `16-email-notification-received.png` | Gmail screenshot showing successful delivery of the Wazuh alert with Severity 12 |
